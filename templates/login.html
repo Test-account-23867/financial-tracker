@@ -1,0 +1,33 @@
+{%extends 'base.html'%} {%block title%}Login{%endblock%} {%block content%}
+
+<div class="content">
+  <div class="login-container">
+    <form action="/login" method="post">
+      {%with messages = get_flashed_messages() %} 
+        {%if messages %}
+            {%if 'success' in messages[0]%}
+                <div class="alert alert-success" role="alert">
+            {%else%}
+                <div class="alert alert-danger" role="alert">
+            {%endif%}
+      
+            {{ messages[0] }}    
+            </div>
+        
+        {%endif%}
+      {%endwith%}
+
+      <h3 class="login-page">Login</h3>
+      <label for="email">Email</label>
+      <input type="email" name="email" required />
+      <label for="password">Password</label>
+      <input type="password" name="password" required />
+      <button type="submit">Log In</button>
+    
+      <p>Don't have an account? <a href="{{url_for('register')}}">SignUp</a></p>
+
+    </form>
+  </div>
+</div>
+
+{%endblock%}

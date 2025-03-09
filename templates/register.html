@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block title%}Register{%endblock%}
+
+{%block content%}
+
+<div class="content">
+    <div class="login-container">
+        <form action="/register" method="post">
+            {%with messages = get_flashed_messages() %}
+              {%if messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{ messages[0] }}
+                </div>
+              {%endif%}
+            {%endwith%}
+            <h3 class="login-page">Register</h3>
+            <label for="name">Name</label>
+            <input type="text" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+            <button type="submit">Register</button>
+
+        <p>Have an account? <a href="{{url_for('login')}}">Login</a></p>
+
+        </form>
+    </div>
+</div>
+
+{%endblock%}
